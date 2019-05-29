@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
-    borderBottomColor: "grey",
+    borderBottomColor: "#e6e6e6",
     borderBottomWidth: 1
   },
   content: {
@@ -46,5 +46,20 @@ export const styles = StyleSheet.create({
   description: {
     fontSize: 16,
     fontWeight: "100"
+  },
+  divider: {
+    width: width * 0.9,
+    height: 1,
+    backgroundColor: "#e6e6e6",
+    marginTop: 20,
+    marginBottom: 20
+  },
+  copyRightContainer: {
+    width: width * 0.9,
+    alignItems: "flex-start",
+    marginBottom: 20
+  },
+  copyRight: {
+    fontSize: 20
   }
 });

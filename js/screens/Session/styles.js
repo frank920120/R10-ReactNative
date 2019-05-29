@@ -47,5 +47,28 @@ export const styles = StyleSheet.create({
   name: {
     fontSize: 20,
     marginLeft: 10
+  },
+  divider: {
+    flex: 1,
+    height: 1,
+    backgroundColor: "#e6e6e6",
+    marginTop: 20,
+    marginBottom: 20
+  },
+  buttonContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  gradient: {
+    justifyContent: "center",
+    borderRadius: 20,
+    width: 200,
+    height: 50
+  },
+  button: {
+    borderRadius: 20,
+    width: 250,
+    textAlign: "center"
   }
 });

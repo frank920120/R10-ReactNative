@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import { styles } from "./styles";
 
 const About = ({ data }) => {
@@ -38,6 +38,10 @@ const About = ({ data }) => {
               </View>
             );
           })}
+        </View>
+        <View style={styles.divider} />
+        <View style={styles.copyRightContainer}>
+          <Text style={styles.copyRight}>© RED Academy 2019</Text>
         </View>
       </View>
     </ScrollView>
