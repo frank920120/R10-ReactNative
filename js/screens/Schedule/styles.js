@@ -4,7 +4,10 @@ let height = Dimensions.get("window").height;
 export const styles = StyleSheet.create({
   sectionContainer: {
     padding: 10,
-    fontFamily: "Montserrat"
+    fontFamily: "Montserrat",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end"
   },
   title: {
     paddingTop: 5,

@@ -1,5 +1,5 @@
 import React, { createContext, Component } from "react";
-import { queryFaves } from "../../config/models";
+import { queryFaves, createFave, deleteFave } from "../../config/models";
 
 const FavesContext = createContext();
 
@@ -10,15 +10,32 @@ class FavesProvider extends Component {
       faveIds: []
     };
   }
+  addFaveSession = async id => {
+    console.log("id", id);
+    try {
+      const newFave = await createFave(id);
+      this.getFavedSessionIds();
+    } catch (e) {
+      return false;
+    }
+  };
+  removeFaveSession = async id => {
+    try {
+      await deleteFave(id);
+      this.getFavedSessionIds();
+    } catch (e) {
+      return false;
+    }
+  };
   getFavedSessionIds = async () => {
     try {
       const faves = await queryFaves();
       const ids = faves.map(fave => fave[0]);
-      console.log(faves);
-      this.state({
+      this.setState({
         faveIds: ids
       });
     } catch (e) {
+      console.log(e);
       return false;
     }
   };
@@ -27,8 +44,17 @@ class FavesProvider extends Component {
   };
 
   render() {
+    {
+      console.log(this.state.faveIds);
+    }
     return (
-      <FavesContext.Provider value={{ ...this.state }}>
+      <FavesContext.Provider
+        value={{
+          ...this.state,
+          addFaveSession: this.addFaveSession,
+          removeFaveSession: this.removeFaveSession
+        }}
+      >
         {this.props.children}
       </FavesContext.Provider>
     );

@@ -24,6 +24,7 @@ class SessionContainer extends Component {
 const GET_SESSION_ITEM = gql`
   query Session($id: ID!) {
     Session(id: $id) {
+      id
       startTime
       location
       title

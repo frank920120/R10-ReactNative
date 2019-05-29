@@ -5,7 +5,8 @@ export const styles = StyleSheet.create({
   sessionContainer: {
     flex: 1,
     padding: 15,
-    fontFamily: "Montserrat"
+    fontFamily: "Montserrat",
+    position: "relative"
   },
   location: {
     paddingTop: 10,
@@ -70,5 +71,10 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     width: 250,
     textAlign: "center"
+  },
+  heart: {
+    position: "absolute",
+    right: 10,
+    top: 25
   }
 });
