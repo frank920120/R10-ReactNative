@@ -6,8 +6,6 @@ import { withNavigation } from "react-navigation";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FavesContext from "../../context/FavesContext";
 const Schedule = ({ ScheduleData, navigation }) => {
-  console.log(ScheduleData);
-
   return (
     <FavesContext.Consumer>
       {values => (
