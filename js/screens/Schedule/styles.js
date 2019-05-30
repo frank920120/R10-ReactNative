@@ -1,10 +1,10 @@
 import { StyleSheet, Dimensions } from "react-native";
-let width = Dimensions.get("window").width; //full width
-let height = Dimensions.get("window").height;
+
+import gobalStyles from "../../config/styles";
 export const styles = StyleSheet.create({
   sectionContainer: {
     padding: 10,
-    fontFamily: "Montserrat",
+    fontFamily: gobalStyles.mainFont,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end"
@@ -14,18 +14,18 @@ export const styles = StyleSheet.create({
     paddingBottom: 5
   },
   location: {
-    color: "grey",
+    color: gobalStyles.mediumGrey,
     paddingTop: 5,
     paddingBottom: 5
   },
   header: {
-    backgroundColor: "#e6e6e6",
+    backgroundColor: gobalStyles.lightGrey,
     padding: 10,
     fontSize: 10
   },
   divider: {
     flex: 1,
     height: 1,
-    backgroundColor: "#e6e6e6"
+    backgroundColor: gobalStyles.lightGrey
   }
 });

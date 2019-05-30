@@ -5,8 +5,14 @@ class SpeakerContainer extends Component {
     super(props);
     this.state = {};
   }
+
   render() {
-    return <Speaker />;
+    return (
+      <Speaker
+        data={this.props.navigation.state.params.data}
+        navigation={this.props.navigation}
+      />
+    );
   }
 }
 

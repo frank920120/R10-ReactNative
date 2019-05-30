@@ -1,18 +1,17 @@
-import { StyleSheet, Dimensions } from "react-native";
-let width = Dimensions.get("window").width; //full width
-let height = Dimensions.get("window").height;
+import { StyleSheet, Dimensions, Platform } from "react-native";
+import gobalStyles from "../../config/styles";
+
 export const styles = StyleSheet.create({
   sessionContainer: {
     flex: 1,
     padding: 15,
-    fontFamily: "Montserrat",
     position: "relative"
   },
   location: {
     paddingTop: 10,
     paddingBottom: 10,
     fontSize: 16,
-    color: "#999999"
+    color: gobalStyles.mediumGrey
   },
   title: {
     paddingTop: 10,
@@ -22,7 +21,7 @@ export const styles = StyleSheet.create({
   time: {
     paddingTop: 10,
     paddingBottom: 10,
-    color: "red",
+    color: gobalStyles.red,
     fontSize: 16
   },
   description: {
@@ -33,7 +32,7 @@ export const styles = StyleSheet.create({
   subHeader: {
     paddingTop: 10,
     paddingBottom: 10,
-    color: "#999999",
+    color: gobalStyles.mediumGrey,
     fontSize: 20
   },
   infoContainer: {
@@ -52,7 +51,7 @@ export const styles = StyleSheet.create({
   divider: {
     flex: 1,
     height: 1,
-    backgroundColor: "#e6e6e6",
+    backgroundColor: gobalStyles.lightGrey,
     marginTop: 20,
     marginBottom: 20
   },
@@ -64,13 +63,15 @@ export const styles = StyleSheet.create({
   gradient: {
     justifyContent: "center",
     borderRadius: 20,
-    width: 200,
+    width: 250,
     height: 50
   },
   button: {
     borderRadius: 20,
     width: 250,
-    textAlign: "center"
+    textAlign: "center",
+    color: "white",
+    fontFamily: gobalStyles.mainFont
   },
   heart: {
     position: "absolute",

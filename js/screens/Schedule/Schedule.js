@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, SectionList, TouchableHighlight } from "react-native";
+import {
+  View,
+  Text,
+  SectionList,
+  TouchableOpacity,
+  Platform
+} from "react-native";
 import { styles } from "./styles";
 import moment from "moment";
 import { withNavigation } from "react-navigation";
@@ -11,7 +17,7 @@ const Schedule = ({ ScheduleData, navigation }) => {
       {values => (
         <SectionList
           renderItem={({ item, index, section }) => (
-            <TouchableHighlight
+            <TouchableOpacity
               onPress={() =>
                 navigation.navigate("Session", {
                   id: item.id
@@ -25,13 +31,17 @@ const Schedule = ({ ScheduleData, navigation }) => {
                 </View>
                 <Text>
                   {values.faveIds.includes(item.id) ? (
-                    <Ionicons name="ios-heart" size={20} color="red" />
+                    <Ionicons
+                      name={Platform.OS === "ios" ? "ios-heart" : "md-heart"}
+                      size={20}
+                      color="red"
+                    />
                   ) : (
                     <Text />
                   )}
                 </Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           )}
           renderSectionHeader={({ section: { title } }) => (
             <Text style={styles.header}>{moment(title).format("LT")}</Text>

@@ -4,10 +4,12 @@ import Session from "./Session";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 class SessionContainer extends Component {
+  static navigationOptions = {
+    title: "Session"
+  };
   constructor(props) {
     super(props);
   }
-
   render() {
     const { params } = this.props.navigation.state;
     return (
@@ -33,6 +35,8 @@ const GET_SESSION_ITEM = gql`
         id
         image
         name
+        bio
+        url
       }
     }
   }

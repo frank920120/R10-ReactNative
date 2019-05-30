@@ -3,7 +3,7 @@ import NavigationLayout from "./NavigationLayout";
 import SpeakerModal from "../screens/Speaker";
 export default createAppContainer(
   createStackNavigator(
-    { Layout: NavigationLayout, speaker: SpeakerModal },
-    { model: "modal", headerMode: "none" }
+    { Layout: NavigationLayout, Speaker: SpeakerModal },
+    { mode: "modal", headerMode: "none" }
   )
 );
