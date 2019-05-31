@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import Conducts from "../../components/Conducts";
 import { styles } from "./styles";
 
 const About = ({ data }) => {
@@ -28,15 +29,7 @@ const About = ({ data }) => {
             <Text style={styles.header}>Code of Conduct</Text>
           </View>
           {data.allConducts.map(d => {
-            return (
-              <View key={d.id}>
-                <View style={styles.conductTitle}>
-                  <Text style={styles.plusMinus}>-</Text>
-                  <Text style={styles.title}>{d.title}</Text>
-                </View>
-                <Text style={styles.description}>{d.description}</Text>
-              </View>
-            );
+            return <Conducts data={d} key={d.id} />;
           })}
         </View>
         <View style={styles.divider} />

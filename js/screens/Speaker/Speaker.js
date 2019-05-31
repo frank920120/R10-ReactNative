@@ -11,7 +11,6 @@ import { styles } from "./styles";
 import LinearGradient from "react-native-linear-gradient";
 import Ionicons from "react-native-vector-icons/Ionicons";
 const Speaker = ({ data, navigation }) => {
-  console.log(data.speaker.url);
   return (
     <View style={styles.speakerContainer}>
       <View style={styles.headerContainer}>
@@ -42,7 +41,7 @@ const Speaker = ({ data, navigation }) => {
               start={{ y: 0.0, x: 0.0 }}
               end={{ y: 0.0, x: 1.0 }}
             >
-              <Text style={styles.button}>Read More on Wikipedia</Text>
+              <Text style={styles.button}>Read More On Wikipedia</Text>
             </LinearGradient>
           </TouchableOpacity>
         </View>

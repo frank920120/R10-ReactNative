@@ -3,11 +3,13 @@ import { StyleSheet } from "react-native";
 import gobalStyles from "../../config/styles";
 export const styles = StyleSheet.create({
   speakerContainer: {
-    flex: 1,
+    width: "100%",
+    height: "100%",
     backgroundColor: "black",
     alignItems: "center",
     position: "relative"
   },
+
   headerContainer: {
     height: 100,
     justifyContent: "center"
@@ -46,10 +48,11 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     alignItems: "center",
-    marginTop: 20
+    marginTop: 20,
+    marginBottom: 20
   },
   bio: {
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: gobalStyles.mainFont,
     padding: 15
   },
