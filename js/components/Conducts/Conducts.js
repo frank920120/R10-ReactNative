@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  LayoutAnimation,
+  Platform,
+  UIManager
+} from "react-native";
 import { styles } from "./styles";
 class Conducts extends Component {
   constructor(props) {
@@ -7,9 +14,14 @@ class Conducts extends Component {
     this.state = {
       isOpen: false
     };
+    if (Platform.OS === "android") {
+      UIManager.setLayoutAnimationEnabledExperimental &&
+        UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
   }
   onClickHandle = () => {
     const currentIsOpen = this.state.isOpen;
+    LayoutAnimation.spring();
     this.setState({
       isOpen: !currentIsOpen
     });
