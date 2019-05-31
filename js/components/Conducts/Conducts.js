@@ -5,14 +5,17 @@ import {
   TouchableOpacity,
   LayoutAnimation,
   Platform,
-  UIManager
+  UIManager,
+  Animated
 } from "react-native";
 import { styles } from "./styles";
 class Conducts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      howFar: new Animated.ValueXY(),
+      spinValue: new Animated.Value(0)
     };
     if (Platform.OS === "android") {
       UIManager.setLayoutAnimationEnabledExperimental &&
@@ -21,14 +24,31 @@ class Conducts extends Component {
   }
   onClickHandle = () => {
     const currentIsOpen = this.state.isOpen;
-    LayoutAnimation.spring();
+
+    Animated.timing(this.state.spinValue, {
+      toValue: 1,
+      duration: 600
+    }).start(animation => {
+      if (animation.finished) {
+        this.setState({ spinValue: new Animated.Value(0) });
+      }
+    });
+
+    LayoutAnimation.easeInEaseOut();
     this.setState({
       isOpen: !currentIsOpen
     });
   };
   render() {
     const { data } = this.props;
-    const { isOpen } = this.state;
+    const { isOpen, spinValue } = this.state;
+    const spin = spinValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: ["0deg", "360deg"]
+    });
+    let animatedStyled = {
+      transform: [{ rotate: spin }]
+    };
     return (
       <TouchableOpacity
         onPress={() => {
@@ -37,7 +57,9 @@ class Conducts extends Component {
       >
         <View key={data.id}>
           <View style={styles.conductTitle}>
-            <Text style={styles.plusMinus}>{isOpen ? "-" : "+"}</Text>
+            <Animated.Text style={[styles.plusMinus, animatedStyled]}>
+              {isOpen ? "-" : "+"}
+            </Animated.Text>
             <Text style={styles.title}>{data.title}</Text>
           </View>
           {isOpen ? (

@@ -1,7 +1,7 @@
 import { Platform } from "react-native";
 
 const gobalStyles = {
-  mainFont: Platform.OS === "ios" ? "Monsterrat" : "Monsterrat-Regular",
+  mainFont: Platform.OS === "ios" ? "Montserrat" : "Montserrat-Regular",
   mediumGrey: "#999999",
   lightGrey: "#e6e6e6",
   blue: "#8797D6",
