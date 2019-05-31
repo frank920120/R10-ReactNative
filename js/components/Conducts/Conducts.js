@@ -5,24 +5,32 @@ class Conducts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOPen: false
+      isOpen: false
     };
   }
   onClickHandle = () => {
+    const currentIsOpen = this.state.isOpen;
     this.setState({
-      isOPen: true
+      isOpen: !currentIsOpen
     });
   };
   render() {
     const { data } = this.props;
+    const { isOpen } = this.state;
     return (
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity
+        onPress={() => {
+          this.onClickHandle();
+        }}
+      >
         <View key={data.id}>
           <View style={styles.conductTitle}>
-            <Text style={styles.plusMinus}>-</Text>
+            <Text style={styles.plusMinus}>{isOpen ? "-" : "+"}</Text>
             <Text style={styles.title}>{data.title}</Text>
           </View>
-          <Text style={styles.description}>{data.description}</Text>
+          {isOpen ? (
+            <Text style={styles.description}>{data.description}</Text>
+          ) : null}
         </View>
       </TouchableOpacity>
     );
