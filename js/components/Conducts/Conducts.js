@@ -15,7 +15,8 @@ class Conducts extends Component {
     this.state = {
       isOpen: false,
       howFar: new Animated.ValueXY(),
-      spinValue: new Animated.Value(0)
+      spinValue: new Animated.Value(0),
+      scaleValue: new Animated.Value(0)
     };
     if (Platform.OS === "android") {
       UIManager.setLayoutAnimationEnabledExperimental &&
@@ -24,13 +25,24 @@ class Conducts extends Component {
   }
   onClickHandle = () => {
     const currentIsOpen = this.state.isOpen;
+    Animated.parallel([
+      Animated.timing(this.state.scaleValue, {
+        toValue: currentIsOpen ? 0 : 1,
+        duration: 1000
+      }),
 
-    Animated.timing(this.state.spinValue, {
-      toValue: 1,
-      duration: 600
-    }).start(animation => {
+      Animated.timing(this.state.spinValue, {
+        toValue: 1,
+        duration: 1500
+      })
+    ]).start(animation => {
       if (animation.finished) {
-        this.setState({ spinValue: new Animated.Value(0) });
+        this.setState({
+          spinValue: new Animated.Value(0),
+          scaleValue: currentIsOpen
+            ? new Animated.Value(0)
+            : new Animated.Value(1)
+        });
       }
     });
 
@@ -41,13 +53,19 @@ class Conducts extends Component {
   };
   render() {
     const { data } = this.props;
-    const { isOpen, spinValue } = this.state;
+    const { isOpen, spinValue, scaleValue } = this.state;
+
     const spin = spinValue.interpolate({
       inputRange: [0, 1],
-      outputRange: ["0deg", "360deg"]
+      outputRange: isOpen ? ["0deg", "360deg"] : ["0deg", "-360deg"]
     });
+    const scale = scaleValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [1, 2.5]
+    });
+
     let animatedStyled = {
-      transform: [{ rotate: spin }]
+      transform: [{ rotate: spin }, { scale: scale }]
     };
     return (
       <TouchableOpacity
