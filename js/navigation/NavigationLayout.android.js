@@ -4,6 +4,7 @@ import AboutScreen from "../screens/About";
 import ScheduleScreen from "../screens/Schedule";
 import SessionScreen from "../screens/Session";
 import FavesScreen from "../screens/Faves";
+import MapsScrees from "../screens/Maps";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { sharedNavigationOptions } from "./config";
 const AboutStack = createStackNavigator(
@@ -16,7 +17,16 @@ const AboutStack = createStackNavigator(
     })
   }
 );
-
+const MapStack = createStackNavigator(
+  {
+    Map: MapsScrees
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
 const ScheduleStack = createStackNavigator(
   {
     Schedule: ScheduleScreen,
@@ -41,6 +51,7 @@ const FavesStack = createStackNavigator(
 export default createDrawerNavigator(
   {
     Schedule: ScheduleStack,
+    Map: MapStack,
     Faves: FavesStack,
     About: AboutStack
   },
@@ -59,7 +70,9 @@ export default createDrawerNavigator(
         if (routeName === "Schedule") {
           iconName = `md-calendar`;
         }
-
+        if (routeName === "Schedule") {
+          iconName = `md-map`;
+        }
         return <IconComponent name={iconName} size={25} color={tintColor} />;
       }
     }),
