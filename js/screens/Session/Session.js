@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   View,
   Text,
@@ -14,15 +15,14 @@ import moment from "moment";
 import LinearGradient from "react-native-linear-gradient";
 import FavesContext from "../../context/FavesContext";
 
-const Session = ({ data, navigation }) => {
-  const time = moment(data.startTime).format("LT");
+const Session = ({ SessionData, navigation }) => {
+  const time = moment(SessionData.startTime).format("LT");
   return (
     <FavesContext.Consumer>
       {values => (
         <ScrollView>
-          {console.log(values)}
           <View style={styles.sessionContainer}>
-            {values.faveIds.includes(data.id) ? (
+            {values.faveIds.includes(SessionData.id) ? (
               <Ionicons
                 style={styles.heart}
                 name={Platform.OS === "ios" ? "ios-heart" : "md-heart"}
@@ -32,30 +32,29 @@ const Session = ({ data, navigation }) => {
             ) : (
               <Text style={styles.heart} />
             )}
-            <Text style={styles.location}>{data.location}</Text>
-            <Text style={styles.title}>{data.title}</Text>
+            <Text style={styles.location}>{SessionData.location}</Text>
+            <Text style={styles.title}>{SessionData.title}</Text>
             <Text style={styles.time}>{time}</Text>
-            <Text style={styles.description}>{data.description}</Text>
+            <Text style={styles.description}>{SessionData.description}</Text>
             <Text style={styles.subHeader}>
-              {!data.speaker ? "No Presenter" : "Presented by"}
+              {!SessionData.speaker ? "No Presenter" : "Presented by"}
             </Text>
-            {!data.speaker ? (
+            {!SessionData.speaker ? (
               <Text />
             ) : (
               <TouchableOpacity
                 onPress={() => {
-                  console.log(navigation);
                   navigation.push("Speaker", {
-                    data: data
+                    data: SessionData
                   });
                 }}
               >
                 <View style={styles.infoContainer}>
                   <Image
                     style={styles.Avatar}
-                    source={{ uri: data.speaker.image }}
+                    source={{ uri: SessionData.speaker.image }}
                   />
-                  <Text style={styles.name}>{data.speaker.name}</Text>
+                  <Text style={styles.name}>{SessionData.speaker.name}</Text>
                 </View>
               </TouchableOpacity>
             )}
@@ -65,9 +64,9 @@ const Session = ({ data, navigation }) => {
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 onPress={() => {
-                  values.faveIds.includes(data.id)
-                    ? values.removeFaveSession(data.id)
-                    : values.addFaveSession(data.id);
+                  values.faveIds.includes(SessionData.id)
+                    ? values.removeFaveSession(SessionData.id)
+                    : values.addFaveSession(SessionData.id);
                 }}
                 style={styles.touch}
               >
@@ -78,7 +77,7 @@ const Session = ({ data, navigation }) => {
                   end={{ y: 0.0, x: 1.0 }}
                 >
                   <Text style={styles.button}>
-                    {values.faveIds.includes(data.id)
+                    {values.faveIds.includes(SessionData.id)
                       ? `Remove To Faves`
                       : `Add To Faves`}
                   </Text>
@@ -91,5 +90,8 @@ const Session = ({ data, navigation }) => {
     </FavesContext.Consumer>
   );
 };
-
+Session.propTypes = {
+  SessionData: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 export default withNavigation(Session);

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   View,
   Text,
@@ -54,5 +55,8 @@ const Schedule = ({ ScheduleData, navigation }) => {
     </FavesContext.Consumer>
   );
 };
-
+Schedule.propTypes = {
+  ScheduleData: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 export default withNavigation(Schedule);

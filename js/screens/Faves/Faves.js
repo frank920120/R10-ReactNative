@@ -4,7 +4,7 @@ import { styles } from "./styles";
 import moment from "moment";
 import { withNavigation } from "react-navigation";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
+import PropTypes from "prop-types";
 const Faves = ({ FavesData, navigation }) => {
   return (
     <SectionList
@@ -36,5 +36,8 @@ const Faves = ({ FavesData, navigation }) => {
     />
   );
 };
-
+Faves.propTypes = {
+  FavesData: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 export default withNavigation(Faves);

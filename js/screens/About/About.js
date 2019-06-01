@@ -2,9 +2,9 @@ import React from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import Conducts from "../../components/Conducts";
 import { styles } from "./styles";
-
-const About = ({ data }) => {
-  console.log(data);
+import PropTypes from "prop-types";
+const About = ({ AboutData }) => {
+  console.log(AboutData);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -28,8 +28,8 @@ const About = ({ data }) => {
             </Text>
             <Text style={styles.header}>Code of Conduct</Text>
           </View>
-          {data.allConducts.map(d => {
-            return <Conducts data={d} key={d.id} />;
+          {AboutData.allConducts.map(conduct => {
+            return <Conducts ConductsData={conduct} key={conduct.id} />;
           })}
         </View>
         <View style={styles.divider} />
@@ -41,4 +41,7 @@ const About = ({ data }) => {
   );
 };
 
+About.propTypes = {
+  AboutData: PropTypes.object.isRequired
+};
 export default About;

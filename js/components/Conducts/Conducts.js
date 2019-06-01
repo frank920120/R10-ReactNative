@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   View,
   Text,
@@ -52,7 +53,7 @@ class Conducts extends Component {
     });
   };
   render() {
-    const { data } = this.props;
+    const { ConductsData } = this.props;
     const { isOpen, spinValue, scaleValue } = this.state;
 
     const spin = spinValue.interpolate({
@@ -73,20 +74,22 @@ class Conducts extends Component {
           this.onClickHandle();
         }}
       >
-        <View key={data.id}>
+        <View key={ConductsData.id}>
           <View style={styles.conductTitle}>
             <Animated.Text style={[styles.plusMinus, animatedStyled]}>
               {isOpen ? "-" : "+"}
             </Animated.Text>
-            <Text style={styles.title}>{data.title}</Text>
+            <Text style={styles.title}>{ConductsData.title}</Text>
           </View>
           {isOpen ? (
-            <Text style={styles.description}>{data.description}</Text>
+            <Text style={styles.description}>{ConductsData.description}</Text>
           ) : null}
         </View>
       </TouchableOpacity>
     );
   }
 }
-
+Conducts.propTypes = {
+  ConductsData: PropTypes.object.isRequired
+};
 export default Conducts;

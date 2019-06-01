@@ -13,7 +13,7 @@ class AboutContainer extends Component {
         {({ loading, error, data }) => {
           if (loading || !data) return <Loader />;
           if (error) return `Error! ${error.message}`;
-          return <About data={data} />;
+          return <About AboutData={data} />;
         }}
       </Query>
     );

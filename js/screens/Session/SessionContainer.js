@@ -17,7 +17,7 @@ class SessionContainer extends Component {
         {({ loading, error, data }) => {
           if (loading || !data) return <Loader />;
           if (error) return `Error! ${error.message}`;
-          return <Session data={data.Session} />;
+          return <Session SessionData={data.Session} />;
         }}
       </Query>
     );

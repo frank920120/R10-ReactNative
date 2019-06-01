@@ -9,7 +9,7 @@ class SpeakerContainer extends Component {
   render() {
     return (
       <Speaker
-        data={this.props.navigation.state.params.data}
+        SpeakerData={this.props.navigation.state.params.data}
         navigation={this.props.navigation}
       />
     );

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   View,
   Text,
@@ -11,7 +12,7 @@ import {
 import { styles } from "./styles";
 import LinearGradient from "react-native-linear-gradient";
 import Ionicons from "react-native-vector-icons/Ionicons";
-const Speaker = ({ data, navigation }) => {
+const Speaker = ({ SpeakerData, navigation }) => {
   return (
     <View style={styles.speakerContainer}>
       <ScrollView contentContainerStyle={styles.center}>
@@ -19,19 +20,22 @@ const Speaker = ({ data, navigation }) => {
           <Text style={styles.header}>About The Speaker</Text>
         </View>
         <View style={styles.content}>
-          <Image style={styles.Avatar} source={{ uri: data.speaker.image }} />
-          <Text style={styles.name}>{data.speaker.name}</Text>
-          <Text style={styles.bio}>{data.speaker.bio}</Text>
+          <Image
+            style={styles.Avatar}
+            source={{ uri: SpeakerData.speaker.image }}
+          />
+          <Text style={styles.name}>{SpeakerData.speaker.name}</Text>
+          <Text style={styles.bio}>{SpeakerData.speaker.bio}</Text>
 
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={() => {
-              Linking.canOpenURL(data.speaker.url)
+              Linking.canOpenURL(SpeakerData.speaker.url)
                 .then(supported => {
                   if (!supported) {
-                    console.log("Can't handle url: " + data.speaker.url);
+                    console.log("Can't handle url: " + SpeakerData.speaker.url);
                   } else {
-                    return Linking.openURL(data.speaker.url);
+                    return Linking.openURL(SpeakerData.speaker.url);
                   }
                 })
                 .catch(err => console.error("An error occurred", err));
@@ -62,6 +66,11 @@ const Speaker = ({ data, navigation }) => {
       </ScrollView>
     </View>
   );
+};
+
+Speaker.propTypes = {
+  SpeakerData: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired
 };
 
 export default Speaker;
