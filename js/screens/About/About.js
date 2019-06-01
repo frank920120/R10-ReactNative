@@ -1,10 +1,9 @@
 import React from "react";
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import Conducts from "../../components/Conducts";
 import { styles } from "./styles";
 import PropTypes from "prop-types";
 const About = ({ AboutData }) => {
-  console.log(AboutData);
   return (
     <ScrollView>
       <View style={styles.container}>

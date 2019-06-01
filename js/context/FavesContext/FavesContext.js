@@ -35,7 +35,6 @@ class FavesProvider extends Component {
         faveIds: ids
       });
     } catch (e) {
-      console.log(e);
       return false;
     }
   };
@@ -44,9 +43,6 @@ class FavesProvider extends Component {
   };
 
   render() {
-    {
-      console.log(this.state.faveIds);
-    }
     return (
       <FavesContext.Provider
         value={{

@@ -1,5 +1,4 @@
 import { StyleSheet, Dimensions } from "react-native";
-let width = Dimensions.get("window").width; //full width
 
 export const styles = StyleSheet.create({
   conductTitle: {
