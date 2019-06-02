@@ -70,9 +70,10 @@ export default createDrawerNavigator(
         if (routeName === "Schedule") {
           iconName = `md-calendar`;
         }
-        if (routeName === "Schedule") {
+        if (routeName === "Map") {
           iconName = `md-map`;
         }
+
         return <IconComponent name={iconName} size={25} color={tintColor} />;
       }
     }),

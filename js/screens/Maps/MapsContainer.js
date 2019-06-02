@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, Text, Platform } from "react-native";
 import Maps from "./Maps";
 class MapsContianer extends Component {
   static navigationOptions = {
@@ -8,7 +8,7 @@ class MapsContianer extends Component {
   render() {
     return (
       <View>
-        <Maps />
+        {Platform.OS === "android" ? <Text>Coming soon...</Text> : <Maps />}
       </View>
     );
   }

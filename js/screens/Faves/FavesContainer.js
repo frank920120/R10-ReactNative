@@ -3,6 +3,7 @@ import Faves from "./Faves";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { formatSessionData } from "../../Helps";
+import Loader from "../../components/Loader";
 import FavesContext from "../../context/FavesContext";
 
 class FavesContainer extends Component {
