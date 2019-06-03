@@ -5,7 +5,12 @@ import moment from "moment";
 import { withNavigation } from "react-navigation";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import PropTypes from "prop-types";
+
 const Faves = ({ FavesData, navigation }) => {
+  console.log(FavesData);
+  if (FavesData.length < 1) {
+    return <Text>No Faves</Text>;
+  }
   return (
     <SectionList
       renderItem={({ item, index, section }) => (
