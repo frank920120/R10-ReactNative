@@ -32,4 +32,5 @@ To run the Android emulator: react-native run-android
 
 ## Author
 
-JUN FANG (Frank)
+**JUN FANG** Full-Stack Developer
+**LinkedIn:** [JUN FANG](https://www.linkedin.com/in/jun-fang-945397167/)
